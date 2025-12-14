@@ -1,5 +1,6 @@
 import './App.css'
 import Header from './components/Header';
+import ProductList from './feature/productList/ProductList';
 
 function App() {
 
@@ -7,7 +8,7 @@ function App() {
     <>
       <Header />
       <main className="max-w-7xl mx-auto px-4">
-        
+        <ProductList />        
       </main>
     </>
   );
