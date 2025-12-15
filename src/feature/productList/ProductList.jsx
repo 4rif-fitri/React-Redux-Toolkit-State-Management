@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState, useTransition } from "react";
+import { useDispatch,useSelector } from "react-redux";
 import { addToCart } from "../cart/cardSlice";
 
 
@@ -7,6 +7,9 @@ const ProductList = () => {
   let [products, setProducts] = useState([]);
   let [isLoadiing, setIsLoadiing] = useState(false);
 	let dispach = useDispatch() 
+  let cartItem = useSelector(state => state.cart.cartItem)
+  console.log(cartItem);
+  
 
   useEffect(() => {
     let fecthProduct = async () => {
@@ -27,7 +30,7 @@ const ProductList = () => {
     fecthProduct();
   }, []);
 
-  console.log(products);
+  // console.log(products);
 
 	let hendleClickBuy = (data) => {
 		dispach(addToCart(data))

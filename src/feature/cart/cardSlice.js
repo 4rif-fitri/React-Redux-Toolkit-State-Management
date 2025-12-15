@@ -9,8 +9,37 @@ export let cartSlice = createSlice({
 	initialState:initState,
 	reducers:{
 		addToCart: (state,actions) => {
-			console.log(actions.payload); // object
+			let newItem = actions.payload
+			// state.cartItem.push(newItem)//add item
+			// console.log(actions.payload); // object			
+
+			let itemIndex  = state.cartItem.findIndex(
+				product => product.id === newItem.id
+			)
 			
+			if (itemIndex !== -1) {
+        //ada
+      //   state.cartItem[itemIndex].quantity += 1;
+      //   state.cartItem[itemIndex].totalPrice =
+      //     state.cartItem[itemIndex].quantity * newItem.price;
+        // item sudah ada
+        state.cartItem[itemIndex].quantity += 1;
+        state.cartItem[itemIndex].totalPrice =
+          state.cartItem[itemIndex].quantity * newItem.price;
+      } else {
+      //   state.cartItem.push({
+      //     ...newItem,
+      //     quantity: 1,
+      //     totalPrice: newItem.price,
+      //   });
+        // item baru
+        state.cartItem.push({
+          ...newItem,
+          quantity: 1,
+          totalPrice: newItem.price,
+        });
+      }
+
 		},
 		removeItemCart: () => {
 			console.log("remove");
