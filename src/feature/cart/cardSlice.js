@@ -51,3 +51,10 @@ export let cartSlice = createSlice({
 export let { addToCart, removeItemCart } = cartSlice.actions;
 
 export default cartSlice
+
+//selector
+export let selectCartItem = (state) => state.cart.cartItem
+export let selectCartTotalItem = (state) => 
+	state.cart.cartItem.reduce((total,item) => 
+		total + item.quantity,0)
+

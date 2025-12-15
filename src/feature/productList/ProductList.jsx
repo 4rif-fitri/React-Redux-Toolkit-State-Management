@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useTransition } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { addToCart } from "../cart/cardSlice";
+import { addToCart, selectCartItem } from "../cart/cardSlice";
 
 
 const ProductList = () => {
   let [products, setProducts] = useState([]);
   let [isLoadiing, setIsLoadiing] = useState(false);
 	let dispach = useDispatch() 
-  let cartItem = useSelector(state => state.cart.cartItem)
-  console.log(cartItem);
+  let cartItem = useSelector(selectCartItem);
+  
+  // console.log(cartItem);
   
 
   useEffect(() => {
